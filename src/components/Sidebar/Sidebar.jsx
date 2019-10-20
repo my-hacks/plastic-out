@@ -66,11 +66,7 @@ class Sidebar extends React.Component {
             className="simple-text logo-mini"
             target="_blank"
             onClick={this.props.toggleSidebar}
-          >
-            <div className="logo-img">
-              <img src={logo.imgSrc} alt="react-logo" />
-            </div>
-          </a>
+          ></a>
         );
         logoText = (
           <a
@@ -79,7 +75,7 @@ class Sidebar extends React.Component {
             target="_blank"
             onClick={this.props.toggleSidebar}
           >
-            {logo.text}
+            {/* {logo.text} */}
           </a>
         );
       } else {

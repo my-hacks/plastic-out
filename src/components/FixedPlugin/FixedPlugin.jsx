@@ -48,9 +48,9 @@ class FixedPlugin extends Component {
     return (
       <div className="fixed-plugin">
         <div className={this.state.classes}>
-          <div onClick={this.handleClick}>
+          {/* <div onClick={this.handleClick}>
             <i className="fa fa-cog fa-2x" />
-          </div>
+          </div> */}
           <ul className="dropdown-menu show">
             <li className="header-title">SIDEBAR BACKGROUND</li>
             <li className="adjustments-line">
