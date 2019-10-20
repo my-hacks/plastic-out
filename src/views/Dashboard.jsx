@@ -4,6 +4,7 @@ import classNames from "classnames";
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
 import BarChart from "./TimeLineGraph";
+import BarGraph from "./GraphReturn";
 
 // reactstrap components
 import {
@@ -56,24 +57,29 @@ class Dashboard extends React.Component {
                 <BarChart width={100} height={50} />
               </Card>
             </Col>
+            <Col xs="6" md="6">
+              <Card className="card-chart">
+                <BarGraph width={100} height={50} />
+              </Card>
+            </Col>
           </Row>
 
           <Row>
             <Col lg="4">
               <Card className="card-chart">
                 <CardHeader>
-                  <h5 className="card-category">Total Shipments</h5>
+                  <h5 className="card-category">Produção Estimada em R$ </h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-bell-55 text-info" /> 763,215
                   </CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <div className="chart-area">
+                  {/* <div className="chart-area">
                     <Line
                       data={chartExample2.data}
                       options={chartExample2.options}
                     />
-                  </div>
+                  </div> */}
                 </CardBody>
               </Card>
             </Col>
