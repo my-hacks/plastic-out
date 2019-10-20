@@ -86,7 +86,7 @@ class Dashboard extends React.Component {
             <Col lg="4">
               <Card className="card-chart">
                 <CardHeader>
-                  <h5 className="card-category">Daily Sales</h5>
+                  <h5 className="card-category">Vendas da ultima semana</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-delivery-fast text-primary" />{" "}
                     3,500€

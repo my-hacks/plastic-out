@@ -13,7 +13,7 @@ class TableUser extends React.Component {
             <Col xs="12" md="12">
               <Card>
                 <CardBody>
-                  <Table>
+                  <Table id="user-table">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -23,19 +23,19 @@ class TableUser extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr className="line-user">
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                       </tr>
-                      <tr>
+                      <tr className="line-user">
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>
                         <td>@fat</td>
                       </tr>
-                      <tr>
+                      <tr className="line-user">
                         <th scope="row">3</th>
                         <td>Larry</td>
                         <td>the Bird</td>

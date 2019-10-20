@@ -10,6 +10,7 @@ import {
 
 // reactstrap components
 import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
+import axios from "axios";
 
 const markers = [
   {
@@ -49,47 +50,64 @@ const markers = [
   }
 ];
 
-const reversedCoords = markers.map(marker => {
-  return { lat: marker.latitude, lng: marker.longitude };
-});
-const MapWrapper = withScriptjs(
-  withGoogleMap(props => (
-    <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{ lat: -23.9618, lng: -46.3322 }}
-      defaultOptions={{
-        scrollwheel: false //we disable de scroll over the map, it is a really annoing when you scroll through page
-      }}
-    >
-      {markers.map(marker => (
-        <Marker
-          key={marker.id}
-          position={{
-            lat: marker.latitude,
-            lng: marker.longitude
-          }}
-          icon={{
-            url:
-              "https://cdn.iconscout.com/icon/free/png-512/plastic-bottle-1468369-1242821.png",
-            scaledSize: new window.google.maps.Size(18, 22)
+class Map extends React.Component {
+  _ismounted = false;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      oceanData: []
+    };
+  }
+
+  async componentDidMount() {
+    this._ismounted = true;
+    const response = await axios.get(
+      "https://7i739zug0g.execute-api.us-east-1.amazonaws.com/dev/sensores"
+    );
+    this.setState({
+      oceanData: response.data
+    });
+    console.log(this.state.oceanData);
+  }
+
+  MapWrapper = withScriptjs(
+    withGoogleMap(props => (
+      <GoogleMap
+        defaultZoom={6}
+        defaultCenter={{ lat: 37.048, lng: -73.9385 }}
+        defaultOptions={{
+          scrollwheel: false //we disable de scroll over the map, it is a really annoing when you scroll through page
+        }}
+      >
+        {this.state.oceanData.map((marker, index) => (
+          <Marker
+            key={index}
+            position={{
+              lat: marker.latitude,
+              lng: marker.longitude
+            }}
+            icon={{
+              url:
+                "https://cdn4.iconfinder.com/data/icons/ecology-filled-line-1/64/21_plastic_bottle_sea_water_polution_ecology-512.png",
+              scaledSize: new window.google.maps.Size(22, 22)
+            }}
+          />
+        ))}
+        <Polygon
+          path={this.reversedCoords}
+          options={{
+            fillColor: "pink",
+            fillOpacity: 0.4,
+            strokeColor: "pink",
+            strokeOpacity: 1,
+            strokeWeight: 1
           }}
         />
-      ))}
-      <Polygon
-        path={reversedCoords}
-        options={{
-          fillColor: "pink",
-          fillOpacity: 0.4,
-          strokeColor: "pink",
-          strokeOpacity: 1,
-          strokeWeight: 1
-        }}
-      />
-    </GoogleMap>
-  ))
-);
+      </GoogleMap>
+    ))
+  );
 
-class Map extends React.Component {
   render() {
     return (
       <>
@@ -104,7 +122,7 @@ class Map extends React.Component {
                     className="map"
                     style={{ position: "relative", overflow: "hidden" }}
                   >
-                    <MapWrapper
+                    <this.MapWrapper
                       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ2nKaowulyv42DMgZp5yuBLniDOg2xfM"
                       loadingElement={<div style={{ height: `100%` }} />}
                       containerElement={<div style={{ height: `100%` }} />}
