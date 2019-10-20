@@ -12525,3 +12525,7 @@ textarea.form-control {
   .card-plain:not(.card-subcategories).card-body {
     padding-left: 0;
     padding-right: 0; }
+
+    .container-graph {
+      padding: 10px;
+    }

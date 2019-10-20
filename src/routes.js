@@ -35,9 +35,9 @@ var routes = [
   },
   {
     path: "/icons",
-    name: "Icons",
+    name: "Cooperados",
     rtlName: "الرموز",
-    icon: "tim-icons icon-atom",
+    icon: "tim-icons icon-single-02",
     component: Icons,
     layout: "/admin"
   },
@@ -45,7 +45,7 @@ var routes = [
     path: "/map",
     name: "Map",
     rtlName: "خرائط",
-    icon: "tim-icons icon-pin",
+    icon: "tim-icons icon-map-big",
     component: Map,
     layout: "/admin"
   }

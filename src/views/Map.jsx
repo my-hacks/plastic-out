@@ -77,7 +77,6 @@ const MapWrapper = withScriptjs(
       ))}
       <Polygon
         path={reversedCoords}
-        //key={1}
         options={{
           fillColor: "pink",
           fillOpacity: 0.4,
